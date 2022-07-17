@@ -11,12 +11,15 @@ function CardList() {
   const pokeApi = usePokeApi();
   
   useEffect(() => {
-    const newsPokemons = pokeApi.getPokemons();
-    setPokemons(newsPokemons);
-  },[]);
+    const uploadPokemons = async () => {
+      const newsPokemons = await pokeApi.getPokemons();
+      setPokemons(newsPokemons);
+    }
+    uploadPokemons();
+  },[pokeApi]);
 
-  const allRendered = (valor) => {
-    if(pokemonsLoadeds.length -1 === valor) {
+  const allRendered = (indexItem) => {
+    if(pokemonsLoadeds.length -1 === indexItem) {
       animationCardsMobile();
     }
   }

@@ -1,0 +1,31 @@
+@import '../../index.scss';
+
+.pagination {
+    @include base-flex(flex, center, center);
+    margin-top: $container-padding-y;
+    padding-left: 0;
+    list-style: none;
+    border-radius: $spacers-l;
+    &__item {
+
+        &:first-child .pagination__link {
+            margin-left: 0;
+            border-top-left-radius: $spacers-l;
+            border-bottom-left-radius: $spacers-l;
+        }
+        &:last-child .pagination__link {
+            border-top-right-radius: $spacers-l;
+            border-bottom-right-radius: $spacers-l;
+        }
+
+    }
+    &__link {
+        position: relative;
+        display: block;
+        padding: $spacers-m $spacers-l;
+        margin-left: -1px;
+        line-height: 1.25;
+        color: $color-link;
+        border: 1px solid $color-link;
+    }
+}
