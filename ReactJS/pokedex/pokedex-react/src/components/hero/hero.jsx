@@ -1,9 +1,9 @@
 import React from 'react'
 
-function hero() {
+function Hero() {
   return (
     <h1>Pokedex</h1>
   )
 }
 
-export default hero
+export default Hero;

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function search() {
+function Search() {
   return (
     <>
     <input id="search" type="text" />
@@ -9,4 +9,4 @@ function search() {
   )
 }
 
-export default search
+export default Search

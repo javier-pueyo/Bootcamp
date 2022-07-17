@@ -1,4 +1,5 @@
-// 
+import { useEffect } from "react";
+
 function Card(props) {
     // console.log('load pokemon');
     let {id, name, weight, height, types, sprites} = props.pokemons;
@@ -6,8 +7,13 @@ function Card(props) {
     height = `${height / 10} m`;
     const image = sprites.other.dream_world.front_default;
 
+    useEffect(() => {
+        props.isRendered(props.indexItem); 
+    }, [])
+    
+
   return (
-    <article className="pokemons__item">
+    <article className={`pokemons__item ${types[0].type.name}`}>
         <div className="pokemons__aside">
             <img width="200" src={image} alt={name} className="pokemons__image" loading="lazy" />
             <span className="pokemons__id">#{id}</span>
@@ -17,7 +23,7 @@ function Card(props) {
             <div className="pokemons__types types">
                 {types.map((type, index) => {
                     return(
-                        <span key = {`${JSON.stringify(type.type.name)}-${index}`} className="types__item">
+                        <span key = {`${JSON.stringify(type.type.name)}-${index}`} className={`types__item ${type.type.name}`}>
                             {type.type.name}
                         </span>
                     );

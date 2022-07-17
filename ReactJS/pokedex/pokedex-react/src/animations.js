@@ -1,11 +1,9 @@
 //Código modificado de: Jemima Abu.
 // Link: https://webdesign.tutsplus.com/es/tutorials/animate-on-scroll-with-javascript--cms-36671
 
- import {totalPokemons} from './pokedex.js';
+//  import {totalPokemons} from './pokedex.js';
 
 const scrollOffset = 200;
- 
-let scrollElements = document.querySelectorAll(".pokemons__item");
  
 const elementInView = (el, offset = 0) => {
 //devuelve el tamaño de un elemento y su posición relativa al viewport. .top(devuelve alto respecto al viewport)
@@ -47,17 +45,18 @@ const handleScrollAnimation = (scrollElements) => {
     }
 }
 
-if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
-
-    window.onload = () => {
+const animationCardsMobile = () => { 
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+        const scrollElements = document.querySelectorAll(".pokemons__item");
         handleScrollAnimation(scrollElements);
-    }
 
-    window.addEventListener('scroll', () => {
-    if (scrollElements.length != totalPokemons) {
-        scrollElements = document.querySelectorAll(".pokemons__item");
+        window.addEventListener('scroll', () => {
+    /*     if (scrollElements.length != totalPokemons) {
+            scrollElements = document.querySelectorAll(".pokemons__item");
+        } */
+        handleScrollAnimation(scrollElements);
+        })
     }
-    handleScrollAnimation(scrollElements);
-    })
-
 }
+
+export default animationCardsMobile;

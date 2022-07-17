@@ -1,4 +1,4 @@
-@import '../../index.scss'
+@import '../../index.scss';
 
 $types:
     bug, 
@@ -25,7 +25,7 @@ $types:
             background-color: var(--#{$type});
     }
     .types__item.#{$type}::before {
-        background-image: url('/pokedex-react/public/assets/icons/#{$type}.svg');
+        background-image: url('../../../public/assets/icons/#{$type}.svg');
     }
 }
 
