@@ -1,0 +1,93 @@
+// =============================================================================
+// _typo.scss : Default classes for Project
+// MIT License
+// =============================================================================
+
+// =============================================================================
+// _typo.scss settings
+// =============================================================================
+
+
+/* Typography */
+
+// Weights
+$font-weight-regular: 400;
+$font-weight-bold: 700;
+
+body {
+  text-rendering: optimizeLegibility;
+  font-family: 'Noto Sans', sans-serif;
+  color: $color-white;
+  @include base-typo(16, $font-weight-regular, 0);
+  line-height: $line-height-base;
+  background-color: $color-black;
+  @include scrollbars;
+}
+
+p {
+  @include base-size(18);
+
+  &::selection {
+    background: $color-link;
+    color: $color-primary;
+  }
+
+  &::-moz-selection {
+    background: $color-link;
+    color: $color-primary;
+  }
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  font-weight: $font-weight-bold;
+  color: $color-white;
+
+  &::selection {
+    background: $color-link;
+    color: $color-primary;
+  }
+  
+  &::-moz-selection {
+    background: $color-link;
+    color: $color-primary;
+  }
+}
+
+.base-h1, h1 {
+  @include base-typo(48, $font-weight-bold, 100);
+  margin: 0;
+  text-align: center;
+  padding-top: 5vh;
+  padding-bottom: 7vh;
+}
+.base-h2, h2 {
+  @include base-typo(24, $font-weight-bold, 100);
+  line-height: 1;
+  margin-bottom: $spacers-l;
+}
+.base-h3 {
+  @include base-typo(20, $font-weight-regular, 0);
+}
+.base-body1 {
+  @include base-typo(14, $font-weight-regular, 0);
+}
+.base-button, button {
+  @include base-typo(16, $font-weight-regular, 200);
+}
+
+a {
+  text-decoration: none;
+  color: $color-link;
+}
+a:hover {
+  color: rgba( $color-link, .6 );
+}
+
+.link-alt {
+  color: $color-white;
+}
+.link-alt:hover {
+  color: rgba( $color-white, .6 );
+}

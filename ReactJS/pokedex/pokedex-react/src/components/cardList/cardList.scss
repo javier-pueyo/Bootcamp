@@ -1,0 +1,122 @@
+@import '../../index.scss'
+
+$types:
+    bug, 
+    dark,
+    dragon,
+    electric,
+    fairy,
+    fighting,
+    fire,
+    flying,
+    ghost,
+    grass,
+    ground,
+    ice,
+    normal,
+    poison,
+    psychic,
+    rock,
+    steel,
+    water;
+
+@each $type in $types {
+    .pokemons__item.#{$type} .pokemons__aside, .types__item.#{$type} {
+            background-color: var(--#{$type});
+    }
+    .types__item.#{$type}::before {
+        background-image: url('/pokedex-react/public/assets/icons/#{$type}.svg');
+    }
+}
+
+.pokemons {
+    @extend .row;
+
+    &__item {
+        position: relative;
+        @include base-flex();
+        background-color: $color-primary;
+        border-radius: $spacers-l;
+        height: 200px;
+        @include large {
+            width: calc(#{$width-third} - #{$gutter-offset});
+            margin: $gutters;
+        }
+        @include large-max {
+            width: calc(#{$width-half} - #{$gutter-offset});
+            margin: $gutters;
+        }
+        @include mobile {
+            margin: $gutters;
+            width: calc(100% - #{$gutter-offset});
+        }
+    }
+    &__item:hover &__aside, &__item.scrolled &__aside  {
+        width: 50%;
+    }
+    &__aside {
+        flex-basis: 50%;
+        @include base-flex(flex, center, center);
+        padding: $spacers-xl;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 9;
+        border-radius: $spacers-l;
+        transition: width 0.5s ease-in-out;
+    }
+    &__image {
+        width: auto;
+        max-width: 150px;
+        height: 100%;
+    }
+    &__id {
+        position: absolute;
+        @include base-size(14);
+        left: $spacers-m;
+        bottom: $spacers-m;
+        color: $color-primary;
+    }
+    &__body {
+        padding: $spacers-l $spacers-m;
+        flex-basis: 50%;
+        text-align: center;
+        margin-left: auto;
+    }
+    &__title {
+        text-transform: capitalize;
+    }
+    & .types {
+        &__item {
+            min-width: 4rem;
+            @include base-size(12);
+            @include base-flex(inline-flex, center, center);
+            border-radius: $spacers-l;
+            color: $color-primary;
+            margin: $spacers-m;
+            padding: $spacers-s $spacers-m;
+
+            &::before {
+                content: '';
+                filter: invert(100%);
+                opacity: 0.4;
+                display: inline-block;
+                background-size: .8rem;
+                width: .8rem;
+                height: .8rem;
+                margin-right: $spacers-s;
+            }
+        }
+    }
+    & .physical {
+        @include base-flex(flex, center, center,);
+
+        &__warp {
+            margin: $spacers-m;
+        }
+        &__name {
+            @include base-size(12);
+            color: $color-lightGrey;
+        }
+    }
+}

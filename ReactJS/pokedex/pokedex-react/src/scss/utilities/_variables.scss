@@ -1,0 +1,81 @@
+// =============================================================================
+// _colors.scss : Colors for Project
+// MIT License
+// =============================================================================
+
+// =============================================================================
+// _colors.scss settings
+// =============================================================================
+
+//Colors
+$color-primary: #314556;
+$color-lightGrey: #dbe4e2;
+$color-link: #627d98;
+$color-link2: #dbe4e2;
+$color-white: #fff;
+$color-black: #263543;
+$color-line: #d9e2ec;
+
+:root {
+    --bug: #D0E3CC;
+    --dark: #a7adba;
+    --dragon: #FFEF9F;
+    --electric: #FCF6BD;
+    --fairy: #F1FFDB;
+    --fighting: #DECCE5;
+    --fire: #FFBEBC;
+    --flying: #C4FAF8;
+    --ghost: #D5D1F5;
+    --grass: #DBFFD6;
+    --ground: #EFEFEF;
+    --ice: #C4FAF8;
+    --normal: #FFCCF9;
+    --poison: #C5A3FF;
+    --psychic: #A79AFF;
+    --rock: #E0E0F3;
+    --steel: #E1EBFF;
+    --water: #D2ECFF;
+}
+
+
+//Space
+$spacers: spToRem(4) !default;
+$spacers-s: ($spacers) + rem;
+$spacers-m: ($spacers * 2) + rem;
+$spacers-l: ($spacers * 4) + rem;
+$spacers-xl: ($spacers * 6) + rem;
+$spacers-xxl: ($spacers * 8) + rem;
+
+$spacers-container-l: ($spacers * 12) + rem;
+$spacers-container-xl: ($spacers * 24) + rem;
+$spacers-container-xxl: ($spacers * 32) + rem;
+
+
+//Grid
+$grid-columns:                12 !default;
+$grid-gutter-width:           ($spacers) + rem !default;
+$grid-row-columns:            6 !default;
+
+//Columns
+$gutter-base: $spacers * 4;
+$gutters: ($gutter-base) + rem;
+$gutter-offset: ($gutter-base * 2) + rem;
+$width-half: 100% / 2;
+$width-third: 100% / 3;
+$width-quarter: 100% / 4;
+$width-sixth: 100% / 6;
+$width-eighth: 100% / 8;
+
+// Container padding
+$container-padding-x: #{$spacers * 4}rem !default;
+$container-padding-y: #{$spacers * 8}rem !default;
+$container-padding-y--mb: #{$spacers * 25}rem !default;
+
+//Box
+$border-radius: 0;
+$box-shadow:                  0 .5rem 1rem rgba($color-white, .15) !default;
+$box-shadow-sm:               0 .125rem .25rem rgba($color-white, .075) !default;
+$box-shadow-lg:               0 1rem 3rem rgba($color-white, .175) !default;
+
+//Tipography
+$line-height-base:            1.5 !default;
