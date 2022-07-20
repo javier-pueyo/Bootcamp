@@ -1,0 +1,63 @@
+@import '../../index.scss';
+
+.search {
+    margin: 0 auto;
+    position: relative;
+    z-index: 999;
+    width: fit-content;
+    margin-bottom: $spacers-container-l;
+
+    &__title {
+        margin-bottom: $spacers-m;
+        color: $color-link;
+    }
+    &__wrapper-input {
+        position: relative;
+    }
+    &__input {
+        display: inline-block;
+        max-width: 300px;
+        padding: $spacers-m $spacers-l;
+        line-height: 1.5;
+        color: $color-link;
+        background-color: transparent;
+        background-clip: padding-box;
+        border: 1px solid $color-line;
+        border-radius: $spacers-m;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        margin-bottom: $spacers-l;
+
+        &::placeholder {
+            color: $color-link;
+        }
+    }
+    &__button {
+        color: $color-link;
+        border-bottom: 1px solid $color-link;
+        position: absolute;
+        right: -$spacers-l;
+        transform: translate(100%);
+    }
+    &__results {
+        border: 1px solid $color-line;
+        border-radius: $spacers-m;
+        text-align: center;
+        position: absolute;
+        width: 100%;
+        z-index: 3;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+        background: rgba($color-white, 0.5);
+        padding: $spacers-m;
+    }
+    &__item {
+        padding: $spacers-m $spacers-l;
+        color: $color-black;
+        cursor: pointer;
+        border-bottom: 1px solid transparent;
+
+        &:hover {
+            border-color: $color-black;
+        }
+    }
+}
