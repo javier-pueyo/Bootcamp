@@ -1,6 +1,6 @@
 import './pagination.scss';
 import React from 'react';
-import { NavLink, useParams, useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const linkPage = [];

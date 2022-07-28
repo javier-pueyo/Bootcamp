@@ -1,6 +1,5 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { useState } from "react";
 import { useParams } from 'react-router-dom';
 import usePokeApi from '../../hooks/pokeApi.service';
 import './cardList.scss';
@@ -12,7 +11,6 @@ import { loadPokemons } from '../redux/pokemons/pokemons.actions';
 function CardList() {
   const dispatch = useDispatch();
   const { pokemons } = useSelector((state) => state.pokemons);
-  console.log('pokemons', pokemons);
 
   const params = useParams();
   // const [pokemonsLoadeds, setPokemons] = useState([]);

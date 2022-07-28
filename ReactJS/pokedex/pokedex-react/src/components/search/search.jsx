@@ -14,10 +14,7 @@ function Search() {
   const inputSearch = useRef(null);
   const [pokemonsFiltered, setPokemonsFiltered] = useState([]);
   const [showPokemons, setShowPokemons] = useState(false);
-  // const [pokemonNames, setPokemonNames] = useState("");
   const [allPokemons, setAllPokemons] = useState([]);
-
-  let pokemonNames = '';
 
   // let allPokemons = []
 
@@ -31,7 +28,6 @@ function Search() {
             pokemon.name
           )
         })
-        console.log(allPokemonsName);
         return allPokemonsName;
     } catch (error) {
     console.error('error', error);
@@ -52,6 +48,7 @@ function Search() {
       if (pokemonNames.length > 2 && pokemon.includes(pokemonNames)) {
         return true;
       }
+      return false;
     }).sort((a,b) => {
       const firstLetterA = a.startsWith(pokemonNames);
       const firstLetterB = b.startsWith(pokemonNames);
@@ -80,7 +77,6 @@ function Search() {
     const pokemonName = event.target.innerText;
     const url = 'https://pokeapi.co/api/v2/pokemon/'+pokemonName;
     const newPokemons = await pokeApi.fetchPokemon(url);
-    console.log('search newpokemons', newPokemons);
 
     if(!filter) setPokemonsBackupReset(pokemons);
     dispatch(loadPokemons([newPokemons]));
@@ -92,7 +88,6 @@ function Search() {
 
   const cleanfilter = () => { 
     setPokemonsFiltered([]);
-    console.log('pokemonsBackupReset', pokemonsBackupReset);
     dispatch(loadPokemons(pokemonsBackupReset));
     dispatch(changeFilterState(false));
     setShowPokemons(false);

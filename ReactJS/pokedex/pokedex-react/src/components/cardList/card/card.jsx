@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 
 function Card(props) {
-    // console.log('load pokemon');
     let {id, name, weight, height, types, sprites} = props.pokemons;
     weight = `${weight / 10} kg`;
     height = `${height / 10} m`;
