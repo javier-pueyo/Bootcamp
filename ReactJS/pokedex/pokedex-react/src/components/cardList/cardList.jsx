@@ -6,10 +6,16 @@ import usePokeApi from '../../hooks/pokeApi.service';
 import './cardList.scss';
 import Card from './card/card';
 import animationCardsMobile from '../../animations';
+import { useDispatch, useSelector } from "react-redux";
+import { loadPokemons } from '../redux/pokemons/pokemons.actions';
 
 function CardList() {
+  const dispatch = useDispatch();
+  const { pokemons } = useSelector((state) => state.pokemons);
+  console.log('pokemons', pokemons);
+
   const params = useParams();
-  const [pokemonsLoadeds, setPokemons] = useState([]);
+  // const [pokemonsLoadeds, setPokemons] = useState([]);
   const pokeApi = usePokeApi();
 
   const pokemonId = () => {
@@ -24,7 +30,8 @@ function CardList() {
 
   const uploadPokemons = async () => {
     const newsPokemons = await pokeApi.getPokemons(pokemonId());
-    setPokemons(newsPokemons);
+    dispatch(loadPokemons(newsPokemons));
+    // setPokemons(newsPokemons);
   }
   
   useEffect(() => {
@@ -37,7 +44,7 @@ function CardList() {
   },[params]);
 
   const allRendered = (indexItem) => {
-    if(pokemonsLoadeds.length -1 === indexItem) {
+    if(pokemons.length -1 === indexItem) {
       animationCardsMobile();
     }
   }
@@ -45,7 +52,7 @@ function CardList() {
   return (
     <div id="pokemonsList" className="pokemons">
       {
-        pokemonsLoadeds.map((pokemon, index) => {
+        pokemons.map((pokemon, index) => {
           return(
             <Card isRendered={allRendered} indexItem={index} pokemons={pokemon} key = {`${JSON.stringify(pokemon)}-${index}`}/>
           )

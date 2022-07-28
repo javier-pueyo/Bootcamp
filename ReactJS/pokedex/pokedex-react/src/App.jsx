@@ -6,20 +6,21 @@ import Pagination from './components/pagination/pagination';
 
 import { Route, Routes } from 'react-router-dom';
 import Search from './components/search/search';
+import { useSelector } from 'react-redux';
 // import { useState } from 'react';
 
 
 function App() {
   // const [pageId, setPageId] = useState(1);
   return (
-    <main>
+    <main className='App'>
       <Hero />
       <Search />
       <Routes>
         <Route path="/" element={<CardList />} />
         <Route path="/:pageId" element={<CardList />} />
       </Routes>
-      <Pagination />
+      {<Pagination />}
     </main> 
   );
 }

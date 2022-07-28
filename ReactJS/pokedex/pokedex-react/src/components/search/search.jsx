@@ -3,8 +3,13 @@ import Axios from "axios";
 import { useEffect, useState, useRef } from 'react';
 import usePokeApi from '../../hooks/pokeApi.service';
 import './search.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadPokemons, changeFilterState } from '../redux/pokemons/pokemons.actions';
 
 function Search() {
+  const dispatch = useDispatch();
+  const { pokemons, filter } = useSelector((state) => state.pokemons);
+  const [pokemonsBackupReset, setPokemonsBackupReset] = useState([]);
   const pokeApi = usePokeApi();
   const inputSearch = useRef(null);
   const [pokemonsFiltered, setPokemonsFiltered] = useState([]);
@@ -75,8 +80,11 @@ function Search() {
     const pokemonName = event.target.innerText;
     const url = 'https://pokeapi.co/api/v2/pokemon/'+pokemonName;
     const newPokemons = await pokeApi.fetchPokemon(url);
-    console.log(newPokemons);
+    console.log('search newpokemons', newPokemons);
 
+    if(!filter) setPokemonsBackupReset(pokemons);
+    dispatch(loadPokemons([newPokemons]));
+    dispatch(changeFilterState(true));
     setPokemonsFiltered([]);
     setShowPokemons(false);
     inputSearch.current.value = '';
@@ -84,6 +92,9 @@ function Search() {
 
   const cleanfilter = () => { 
     setPokemonsFiltered([]);
+    console.log('pokemonsBackupReset', pokemonsBackupReset);
+    dispatch(loadPokemons(pokemonsBackupReset));
+    dispatch(changeFilterState(false));
     setShowPokemons(false);
   }
   
@@ -92,7 +103,7 @@ function Search() {
       <p className='search__title'>Buscador</p>
       <div className='search__wrapper-input'>
         <input ref={inputSearch} className='search__input' type="text" placeholder="Añade 3 letras o más" onChange={inputPokemon}/>
-        {showPokemons && <button className='search__button' onClick={cleanfilter}>Clean search</button>}
+        {filter && <button className='search__button' onClick={cleanfilter}>Clean search</button>}
       </div>
       {showPokemons && <div className="search__results">
       {

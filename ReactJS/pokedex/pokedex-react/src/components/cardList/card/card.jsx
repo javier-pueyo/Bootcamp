@@ -5,7 +5,7 @@ function Card(props) {
     let {id, name, weight, height, types, sprites} = props.pokemons;
     weight = `${weight / 10} kg`;
     height = `${height / 10} m`;
-    const image = sprites.other.dream_world.front_default;
+    const image = sprites.other['official-artwork'].front_default;
 
     useEffect(() => {
         props.isRendered(props.indexItem); 

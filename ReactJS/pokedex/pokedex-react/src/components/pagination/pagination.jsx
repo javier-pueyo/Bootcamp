@@ -1,6 +1,7 @@
 import './pagination.scss';
 import React from 'react';
 import { NavLink, useParams, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const linkPage = [];
 const numberPages = 3;
@@ -10,12 +11,14 @@ for (let i = startNumerPages; i < numberPages; i++) {
 }
 
 function Pagination() {
+    const { filter } = useSelector((state) => state.pokemons);
     const location = useLocation();
     let pageId = Number(location.pathname.slice(1));
     if (!pageId) pageId = 1;
     
   return (
     <nav aria-label="page navigation">
+    { !filter &&
         <ul className="pagination">
             <li className="pagination__item">
                 {pageId > 0 && <NavLink to={`/${pageId - 1}`} className="pagination__link">Previous</NavLink>}
@@ -36,6 +39,7 @@ function Pagination() {
                 <NavLink to={`/${pageId + 1}`} className="pagination__link">Next</NavLink>
             </li>
         </ul>
+    }
     </nav>
   )
 }

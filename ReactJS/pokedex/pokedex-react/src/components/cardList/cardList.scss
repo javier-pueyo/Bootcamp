@@ -31,6 +31,7 @@ $types:
 
 .pokemons {
     @extend .row;
+    justify-content: center;
 
     &__item {
         position: relative;
